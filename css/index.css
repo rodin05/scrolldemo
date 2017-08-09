@@ -150,8 +150,8 @@ body{
     background: #f2f2f2;
     position: absolute;
     left: 0;
-    bottom: -35px;
-    z-index: 1;
+    bottom: -50px;
+    z-index: -1;
 }
 
 /* 全局提示信息 */
