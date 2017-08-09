@@ -15,9 +15,12 @@ function initScroll() {
   });
   // 滑动中
   scroll.on('scroll', function (position) {
-    if(position.y > 30) {
+    if(position.y > 50) {
       topTip.innerText = '释放立即刷新';
+    }else if(position.y<this.maxScrollY-50){
+      bottomTip.innerText = '释放加载更多';
     }
+
   });
   /*
    * @ touchend:滑动结束的状态
@@ -25,7 +28,8 @@ function initScroll() {
   */ 
   // 滑动结束
   scroll.on('touchend', function (position) {
-    if (position.y > 30) {
+    var that=this;
+    if (position.y > 50) {
       
       setTimeout(function () {
         /*
@@ -39,11 +43,11 @@ function initScroll() {
         // 刷新列表后,重新计算滚动区域高度
         scroll.refresh();
       }, 1000);
-    }else if(position.y < (this.maxScrollY - 30)) {
+    }else if(position.y < (this.maxScrollY - 50)) {
       bottomTip.innerText = '加载中...';
       setTimeout(function () {
         // 恢复文本值 
-        bottomTip.innerText = '查看更多';
+        bottomTip.innerText = '上拉加载更多';
         // 向列表添加数据
         reloadData();
         // 加载更多后,重新计算滚动区域高度
